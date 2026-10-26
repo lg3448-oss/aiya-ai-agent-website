@@ -67,9 +67,10 @@ body{background:#fff;color:#071a3d}
 .button-arrow{font-family:Arial,Helvetica,sans-serif;font-size:1.15em;font-weight:400;line-height:1}
 
 @media(max-width:600px){
-  .final-cta{min-height:auto;padding:76px 18px 84px}
-  .final-cta h2{font-size:clamp(56px,18vw,76px);line-height:.9;margin:64px 0 36px;max-width:7.5ch}
-  .final-cta .cta-mark{display:none}
+  .final-cta{min-height:auto;padding:76px 18px 84px;isolation:isolate}
+  .final-cta>p,.final-cta h2,.final-cta>.button{position:relative;z-index:2}
+  .final-cta h2{font-size:clamp(56px,18vw,76px);line-height:.9;margin:250px 0 36px;max-width:7.5ch}
+  .final-cta .cta-mark{display:block;top:112px;right:18px;width:170px;height:180px;opacity:.9;z-index:1;pointer-events:none}
   .final-cta .button{width:max-content;max-width:100%;min-width:0;gap:28px}
 }
 .footer{background:#f7fbff;color:#071a3d;border-top:1px solid #dce8f4}.footer>img{background:transparent}.footer p{color:#284764}.footer>div{border-color:#d4e2ef;color:#627b97}
