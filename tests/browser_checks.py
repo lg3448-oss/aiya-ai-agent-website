@@ -124,6 +124,26 @@ class WebsiteChecks(unittest.TestCase):
         self.assertTrue(item.locator('p').is_visible())
         context.close()
 
+    def test_rich_footer_links_and_use_case_page(self):
+        footer = self.page.locator('.site-footer')
+        self.assertEqual(footer.count(), 1)
+        self.assertEqual(footer.locator('.footer-case-links a').count(), 9)
+        self.assertTrue(footer.locator('[data-updates-link]').get_attribute('href').startswith('mailto:'))
+        footer.locator('.footer-case-links a').first.click()
+        self.assertIn('/use-cases.html#', self.page.url)
+        self.assertEqual(self.page.locator('.use-case').count(), 9)
+        self.assertEqual(self.page.locator('.site-footer').count(), 1)
+        for link in self.page.locator('.site-footer a[href*=".html"]').all():
+            href = link.get_attribute('href')
+            file, _, anchor = href.partition('#')
+            path = ROOT / file
+            self.assertTrue(path.is_file(), href)
+            if anchor:
+                self.assertIn('id="'+anchor+'"', path.read_text(encoding='utf-8'), href)
+        for width in [320,768,1440]:
+            self.page.set_viewport_size({'width':width,'height':900})
+            self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
+
     def test_typing_and_orbits_pause_without_hiding_content(self):
         self.page.set_viewport_size({'width': 1366, 'height': 768})
         self.page.emulate_media(reduced_motion='no-preference')
@@ -187,7 +207,7 @@ class WebsiteChecks(unittest.TestCase):
         self.page.set_viewport_size({'width': 1440, 'height': 900})
         self.page.reload()
         self.page.evaluate('() => document.fonts.ready')
-        self.assertEqual(self.page.locator('[data-screen]').count(), 7)
+        self.assertEqual(self.page.locator('[data-screen]').count(), 8)
         self.assertTrue(self.page.evaluate('document.documentElement.classList.contains("fullpage-ready")'))
         self.assertGreaterEqual(self.page.locator('[data-screen]').first.bounding_box()['height'], 899)
         self.assertGreaterEqual(float(self.page.locator('.eyebrow').evaluate('(el) => parseFloat(getComputedStyle(el).fontSize)')), 15)
