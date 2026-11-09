@@ -258,6 +258,7 @@ function selectScenario(tab) {
     item.tabIndex = item === tab ? 0 : -1;
   });
   panel.setAttribute('aria-labelledby', tab.id);
+  panel.dataset.scenarioView = currentScenario;
   document.querySelector('[data-scenario-title]').textContent = workflow.title;
   document.querySelector('[data-brief]').textContent = workflow.brief;
   stageButtons.forEach((button, index) => {

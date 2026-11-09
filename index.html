@@ -13,6 +13,7 @@
   <link rel="preload" href="assets/fonts/instrument-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="typography.css?v=17">
   <link rel="stylesheet" href="sections.css?v=20">
+  <link rel="stylesheet" href="motion.css?v=21">
   <noscript><style>.scenario-tabs,.stage-buttons,.tour-button,.tour-caption,.menu-button{display:none!important}.nav-links{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap}.nav{height:auto;flex-wrap:wrap}.hero{padding-top:36px}.tool-cloud button{pointer-events:none}</style></noscript>
 </head>
 <body>
@@ -40,18 +41,14 @@
           <button id="scenario-research" type="button" role="tab" aria-selected="false" aria-controls="workflow-panel" tabindex="-1" data-scenario="research">Market research</button>
           <button id="scenario-content" type="button" role="tab" aria-selected="false" aria-controls="workflow-panel" tabindex="-1" data-scenario="content">Content operations</button>
         </div></div>
-        <div id="workflow-panel" class="flow-panel" role="tabpanel" aria-labelledby="scenario-restaurant" tabindex="0">
-          <div class="task-line"><div class="task-label"><span class="task-symbol" aria-hidden="true">↳</span><span>Your brief</span></div><p data-brief>Create a week of marketing for our lunch offer.</p></div>
-          <div class="flow-navigation"><div class="flow-route" aria-hidden="true"><span></span></div><div class="stage-buttons" aria-label="Workflow stages">
+        <div id="workflow-panel" class="flow-panel" data-scenario-view="restaurant" role="tabpanel" aria-labelledby="scenario-restaurant" tabindex="0">
+<div class="workbench"><div class="brief-column"><div class="task-line"><div class="task-label"><span class="task-symbol" aria-hidden="true">↳</span><span>Your brief</span></div><p data-brief>Create a week of marketing for our lunch offer.</p><p class="typed-brief" data-typed aria-hidden="true">Create a week of marketing for our lunch offer.</p></div><div class="flow-aside"><span class="flow-step" data-stage-count>Step 1 of 4</span><h2 data-scenario-title>A week of marketing.</h2><button class="tour-button" type="button" data-tour><span class="tour-icon" aria-hidden="true">▶</span><span data-tour-label>Watch the workflow</span></button><span class="tour-caption">Stops for your review.</span></div></div><div class="work-connector" aria-hidden="true"><span>✦</span></div><div class="sample-output" aria-live="polite" aria-atomic="true"><div class="output-meta"><span data-output-kind>Sample brief</span><span class="sample-label">Illustrative output</span></div><div class="output-visual" aria-hidden="true"><div class="visual-poster"><span class="poster-word">A better<br>lunch break.</span><span class="poster-disc"></span><span class="poster-caption">Your next campaign</span></div><div class="visual-chart"><span></span><span></span><span></span><span></span><span></span></div><div class="visual-document"><i></i><i></i><i></i><i></i></div><span class="output-seal">AI Pilot <b>✦</b></span></div><h3 data-output-title>Start with the essentials.</h3><p data-output-copy>One offer. Clear guidelines. A named reviewer.</p><ul data-output-items><li>Lunch offer and menu</li><li>Brand assets and channels</li><li>Review owner</li></ul><div class="output-footer"><span class="approval-dot" aria-hidden="true"></span><span data-output-footer>Your brief sets the direction.</span></div></div></div>
+<div class="flow-navigation"><div class="flow-route" aria-hidden="true"><span></span></div><div class="stage-buttons" aria-label="Workflow stages">
             <button type="button" data-stage="0" aria-pressed="true"><span>01</span><b>Brief</b><small>Define the offer</small></button>
             <button type="button" data-stage="1" aria-pressed="false"><span>02</span><b>Create</b><small>Prepare the campaign</small></button>
             <button type="button" data-stage="2" aria-pressed="false"><span>03</span><b>Review</b><small>Get team approval</small></button>
             <button type="button" data-stage="3" aria-pressed="false"><span>04</span><b>Delivery plan</b><small>After your approval</small></button>
           </div></div>
-          <div class="flow-result">
-            <div class="flow-aside"><span class="flow-step" data-stage-count>Step 1 of 4</span><h2 data-scenario-title>A week of marketing.</h2><button class="tour-button" type="button" data-tour><span class="tour-icon" aria-hidden="true">▶</span><span data-tour-label>Watch the workflow</span></button><span class="tour-caption">Stops for your review.</span></div>
-            <div class="sample-output" aria-live="polite" aria-atomic="true"><div class="output-meta"><span data-output-kind>Sample brief</span><span class="sample-label">Illustrative output</span></div><h3 data-output-title>Start with the essentials.</h3><p data-output-copy>One offer. Clear guidelines. A named reviewer.</p><ul data-output-items><li>Lunch offer and menu</li><li>Brand assets and channels</li><li>Review owner</li></ul><div class="output-footer"><span class="approval-dot" aria-hidden="true"></span><span data-output-footer>Your brief sets the direction.</span></div></div>
-          </div>
           <div class="flow-bottom"><span class="flow-status" role="status"><i aria-hidden="true"></i><span data-flow-status>Start with a clear brief</span></span></div>
         </div>
         <noscript><p class="fallback-note">This restaurant example shows the starting brief. With JavaScript enabled, you can switch scenarios and explore each stage. All service details and FAQs remain readable below.</p></noscript>
@@ -59,19 +56,27 @@
     </section>
 
     <section class="delivery-section fullscreen-section" data-screen="Our service" id="delivery" aria-labelledby="delivery-heading"><div class="section-shell">
-      <div class="section-heading"><div><p class="section-label">From first idea to everyday work</p><h2 id="delivery-heading">Built for you.<br>Run with you.</h2></div></div>
+      <div class="service-layout"><div class="service-copy"><div class="section-heading"><div><p class="section-label">From first idea to everyday work</p><h2 id="delivery-heading">Built for you.<br>Run with you.</h2></div></div>
       <div class="deliverables">
-        <article><span class="service-step">01</span><h3>Find the right task.</h3><p>Map the work. Define the outcome.</p></article>
-        <article><span class="service-step">02</span><h3>Make it yours.</h3><p>Build the agent. Connect your tools. Test together.</p></article>
-        <article><span class="service-step">03</span><h3>Keep it moving.</h3><p>Operate, review, and improve as your business grows.</p></article>
-      </div>
-
+        <article data-service-row="0"><button class="service-step" type="button" data-service="0" aria-label="Explore discover" aria-pressed="true">01</button><h3>Find the right task.</h3><p>Map the work. Define the outcome.</p></article>
+        <article data-service-row="1"><button class="service-step" type="button" data-service="1" aria-label="Explore build" aria-pressed="false">02</button><h3>Make it yours.</h3><p>Build the agent. Connect your tools. Test together.</p></article>
+        <article data-service-row="2"><button class="service-step" type="button" data-service="2" aria-label="Explore operate" aria-pressed="false">03</button><h3>Keep it moving.</h3><p>Operate, review, and improve as your business grows.</p></article>
+      </div></div>
+      <div class="service-universe" data-motion-scene aria-label="Explore our connected service">
+        <div class="universe-grid" aria-hidden="true"></div>
+        <div class="orbit-ring orbit-a" aria-hidden="true"><span class="satellite"></span></div><div class="orbit-ring orbit-b" aria-hidden="true"><span class="satellite"></span></div><div class="orbit-ring orbit-c" aria-hidden="true"><span class="satellite"></span></div>
+        <div class="universe-core"><span class="core-symbol" aria-hidden="true">✦</span><strong>Your business.</strong><span data-orbit-detail>Find the work worth automating.</span></div>
+        <button class="orbit-node node-discover" type="button" data-orbit-service="0" aria-pressed="true"><span aria-hidden="true">⌕</span>Discover</button>
+        <button class="orbit-node node-build" type="button" data-orbit-service="1" aria-pressed="false"><span aria-hidden="true">⧉</span>Build</button>
+        <button class="orbit-node node-operate" type="button" data-orbit-service="2" aria-pressed="false"><span aria-hidden="true">↻</span>Operate</button>
+        <p class="universe-caption">One connected service. Built around you.</p>
+      </div></div>
     </div></section>
 
     <section class="control-screen fullscreen-section" id="control" data-screen="Your control" aria-labelledby="control-heading"><div class="section-shell"><div class="control-note"><div class="control-heading"><p class="section-label">You stay in control</p><h2 id="control-heading">Your business.<br>Your call.</h2></div><figure class="context-image"><img src="assets/restaurant-editorial.webp" loading="lazy" decoding="async" width="1500" height="1000" alt="Illustrative scene of restaurant operators reviewing their work together"><figcaption>Built around your team.<small>Illustrative scene.</small></figcaption></figure><div class="control-points"><p><strong>Your tools.</strong> Access agreed before we build.</p><p><strong>Your approval.</strong> Review the actions that matter.</p><p><strong>Clear costs.</strong> Service and AI usage scoped upfront.</p></div></div></div></section>
 
     <section class="tools section-shell fullscreen-section" data-screen="Your tools" id="workflow" aria-labelledby="tools-heading"><div class="tools-copy"><p class="section-label">Keep the tools you love</p><h2 id="tools-heading">Better together.</h2><p>Explore a possible stack. We’ll assess the right connections.</p><div class="selected-count" role="status" aria-live="polite" aria-atomic="true"><strong data-count>4</strong><span>tools selected<br>for this example</span></div></div>
-      <div class="tool-cloud reveal" data-tools role="group" aria-label="Example tool stack" aria-describedby="tool-help">
+      <div class="tool-cloud reveal connection-field" data-tools role="group" aria-label="Example tool stack" aria-describedby="tool-help">
         <button class="tool selected" type="button" aria-pressed="true"><img class="tool-logo" src="assets/tool-google.svg" alt="" width="34" height="34">Google Search</button>
         <button class="tool" type="button" aria-pressed="false"><img class="tool-logo" src="assets/tool-exa.svg" alt="" width="34" height="34">Exa</button>
         <button class="tool" type="button" aria-pressed="false"><img class="tool-logo" src="assets/tool-firecrawl.svg" alt="" width="34" height="34">Firecrawl</button>
@@ -88,7 +93,7 @@
       </div>
     </section>
 
-<section class="faq-section fullscreen-section" data-screen="Questions" id="faq" aria-labelledby="faq-heading"><div class="faq-layout section-shell"><div><p class="section-label">A few things to know</p><h2 id="faq-heading">Your questions,<br>answered.</h2><p><a class="text-link" href="mailto:aipilot@aiya.us">Ask us anything <span aria-hidden="true">↗</span></a></p></div><div class="faq-list">
+<section class="faq-section fullscreen-section" data-screen="Questions" id="faq" aria-labelledby="faq-heading"><div class="faq-layout section-shell"><div><p class="section-label">A few things to know</p><h2 id="faq-heading">Your questions,<br>answered.</h2><div class="conversation-art" aria-hidden="true"><div class="conversation-orbit"></div><span class="question-bubble">?</span><span class="answer-bubble">Let’s make<br>it clear.<i></i><i></i><i></i></span></div><p><a class="text-link" href="mailto:aipilot@aiya.us">Ask us anything <span aria-hidden="true">↗</span></a></p></div><div class="faq-list">
       <details><summary>What kinds of work are a good fit?</summary><p>Recurring tasks with clear inputs and reviewable outputs: marketing, research, and content are good starting points. We assess fit together.</p></details>
       <details><summary>Do we need to replace our existing tools?</summary><p>Usually, we start with your existing tools. Feasibility depends on APIs, permissions, and platform rules. We confirm the scope first.</p></details>
       <details><summary>Will the agent act without our approval?</summary><p>We agree which actions need a reviewer and which can run automatically. This website’s demos never connect accounts or publish content.</p></details>
@@ -98,12 +103,14 @@
     </div></div></section>
 
 <section class="contact-screen fullscreen-section" id="contact" data-screen="Get in touch" aria-label="Contact AI Pilot">
-    <div class="final-cta section-shell"><div class="contact-copy"><p class="section-label">Start with one task</p><h2>What would you<br>take off your plate?</h2><p>Tell us what repeats. We’ll explore a better way.</p><a class="button button-primary" href="mailto:aipilot@aiya.us?subject=Discuss%20my%20AI%20Pilot%20workflow">Let’s talk <span aria-hidden="true">↗</span></a><p class="contact-note">Email us at <a href="mailto:aipilot@aiya.us">aipilot@aiya.us</a>.</p></div><div class="contact-art" aria-hidden="true"><div class="flight-path path-one"></div><div class="flight-path path-two"></div><div class="flight-path path-three"></div><span class="flight-center">AI Pilot</span></div></div>
+    <div class="final-cta section-shell"><div class="contact-copy"><p class="section-label">Start with one task</p><h2>What would you<br>take off your plate?</h2><p>Tell us what repeats. We’ll explore a better way.</p><a class="button button-primary" href="mailto:aipilot@aiya.us?subject=Discuss%20my%20AI%20Pilot%20workflow">Let’s talk <span aria-hidden="true">↗</span></a><p class="contact-note">Email us at <a href="mailto:aipilot@aiya.us">aipilot@aiya.us</a>.</p></div><div class="contact-art" data-motion-scene aria-hidden="true"><div class="flight-path path-one"></div><div class="flight-path path-two"></div><div class="flight-path path-three"></div><span class="flight-center">AI Pilot</span></div></div>
   <footer class="footer"><div class="footer-inner section-shell"><div class="footer-brand"><img src="assets/ai-pilot-logo-v2.webp" width="440" height="440" alt="AI Pilot"><p>AI agents.<br>Built around your business.</p></div><div class="footer-contact"><a href="mailto:aipilot@aiya.us"><span>Email</span><strong>aipilot@aiya.us</strong></a><a href="tel:+19296798302"><span>Call the team</span><strong>929-679-8302</strong></a><a href="https://www.facebook.com/share/1Kr8Xjx6mK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><span>Facebook</span><strong>Visit our page ↗</strong></a></div><div class="footer-bottom"><span>&copy; 2026 AI Pilot by AIYA Technology System LLC</span><a href="#top">Back to top ↑</a></div></div></footer>
     </section>
   </main>
 <nav class="screen-nav" aria-label="Page sections"><a href="#home" aria-label="Introduction"><span>Introduction</span><i aria-hidden="true"></i></a><a href="#demo" aria-label="Workflow"><span>Workflow</span><i aria-hidden="true"></i></a><a href="#delivery" aria-label="Our service"><span>Our service</span><i aria-hidden="true"></i></a><a href="#control" aria-label="Your control"><span>Your control</span><i aria-hidden="true"></i></a><a href="#workflow" aria-label="Your tools"><span>Your tools</span><i aria-hidden="true"></i></a><a href="#faq" aria-label="Questions"><span>Questions</span><i aria-hidden="true"></i></a><a href="#contact" aria-label="Get in touch"><span>Get in touch</span><i aria-hidden="true"></i></a></nav>
-  <script src="script.js?v=19"></script>
+  <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" hidden>Pause motion</button>
+  <script src="script.js?v=21"></script>
+  <script src="motion.js?v=21"></script>
   <script src="section-scroll.js?v=18"></script>
 </body>
 </html>

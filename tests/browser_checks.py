@@ -68,6 +68,37 @@ class WebsiteChecks(unittest.TestCase):
         self.assertEqual(tool.get_attribute('aria-pressed'), 'false')
         self.assertEqual(self.page.locator('[data-count]').inner_text(), '3')
 
+    def test_motion_controls_and_service_exploration(self):
+        self.page.emulate_media(reduced_motion='no-preference')
+        self.page.reload()
+        control = self.page.locator('[data-motion-toggle]')
+        self.assertEqual(control.count(), 1)
+        control.click()
+        self.assertEqual(control.get_attribute('aria-pressed'), 'true')
+        self.page.locator('[data-orbit-service="1"]').click()
+        self.assertIn('Connect', self.page.locator('[data-orbit-detail]').inner_text())
+        self.page.emulate_media(reduced_motion='reduce')
+        self.page.locator('#demo').scroll_into_view_if_needed()
+        self.page.locator('[data-scenario="research"]').click()
+        self.assertEqual(self.page.locator('[data-typed]').inner_text(), self.page.locator('[data-brief]').inner_text())
+        self.assertEqual(self.page.locator('.satellite').first.evaluate('(el) => getComputedStyle(el).animationName'), 'none')
+
+    def test_typing_and_orbits_pause_without_hiding_content(self):
+        self.page.set_viewport_size({'width': 1366, 'height': 768})
+        self.page.emulate_media(reduced_motion='no-preference')
+        self.page.reload()
+        self.page.locator('#demo').evaluate('(el)=>el.scrollIntoView({behavior:"instant"})')
+        self.page.wait_for_function('document.querySelector("[data-typed]").classList.contains("is-typing")')
+        self.assertEqual(self.page.locator('[data-typed]').get_attribute('aria-hidden'), 'true')
+        self.page.locator('[data-motion-toggle]').click()
+        self.assertEqual(self.page.locator('[data-typed]').inner_text(), self.page.locator('[data-brief]').inner_text())
+        self.page.locator('#delivery').evaluate('(el)=>el.scrollIntoView({behavior:"instant"})')
+        self.page.wait_for_function('document.querySelector(".service-universe").classList.contains("is-inview")')
+        satellite = self.page.locator('.satellite').first
+        self.assertEqual(satellite.evaluate('(el)=>getComputedStyle(el).animationPlayState'), 'paused')
+        self.page.locator('[data-motion-toggle]').click()
+        self.assertEqual(satellite.evaluate('(el)=>getComputedStyle(el).animationPlayState'), 'running')
+
     def test_menu_icon_has_contrast(self):
         self.assertNotEqual(self.page.locator('.menu-button span').first.evaluate('(el) => getComputedStyle(el).backgroundColor'), 'rgb(255, 255, 255)')
 
