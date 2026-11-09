@@ -2,7 +2,7 @@
 
 ## Scope
 
-Eight chapters: hero, workflow, service, human control, tools, FAQ, contact, and the site directory. The directory has its own screen so the expanded footer does not crowd the contact animation. Existing imagery and interactive workflow remain intact. Section padding and content widths are shared.
+Nine chapters: hero, workflow, service, human control, tools, education, FAQ, contact, and the site directory. The directory has its own screen so the expanded footer does not crowd the contact animation. Existing imagery and interactive workflow remain intact. Section padding and content widths are shared.
 
 ## Interaction
 

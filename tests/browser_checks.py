@@ -159,6 +159,28 @@ class WebsiteChecks(unittest.TestCase):
             self.page.set_viewport_size({'width':width,'height':900})
             self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
 
+    def test_education_resources_filter_and_accessibility(self):
+        self.page.goto(self.url+'/education.html')
+        self.assertEqual(self.page.locator('.learning-resource').count(), 6)
+        self.page.locator('[data-resource-filter="video"]').click()
+        self.assertEqual(self.page.locator('.learning-resource:visible').count(), 2)
+        self.assertEqual(self.page.locator('[data-resource-filter="video"]').get_attribute('aria-pressed'), 'true')
+        self.page.locator('[data-resource-filter="article"]').click()
+        self.assertEqual(self.page.locator('.learning-resource:visible').count(), 4)
+        self.page.locator('[data-resource-filter="all"]').click()
+        self.assertEqual(self.page.locator('.learning-resource:visible').count(), 6)
+        for link in self.page.locator('.learning-resource a').all():
+            self.assertTrue(link.get_attribute('href').startswith('https://'))
+            self.assertIn('noopener',link.get_attribute('rel'))
+        for width in [320,768,1440]:
+            self.page.set_viewport_size({'width':width,'height':900})
+            self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
+        context=self.browser.new_context(java_script_enabled=False)
+        page=context.new_page()
+        page.goto(self.url+'/education.html')
+        self.assertEqual(page.locator('.learning-resource:visible').count(),6)
+        context.close()
+
     def test_typing_and_orbits_pause_without_hiding_content(self):
         self.page.set_viewport_size({'width': 1366, 'height': 768})
         self.page.emulate_media(reduced_motion='no-preference')
@@ -222,7 +244,7 @@ class WebsiteChecks(unittest.TestCase):
         self.page.set_viewport_size({'width': 1440, 'height': 900})
         self.page.reload()
         self.page.evaluate('() => document.fonts.ready')
-        self.assertEqual(self.page.locator('[data-screen]').count(), 8)
+        self.assertEqual(self.page.locator('[data-screen]').count(), 9)
         self.assertTrue(self.page.evaluate('document.documentElement.classList.contains("fullpage-ready")'))
         self.assertGreaterEqual(self.page.locator('[data-screen]').first.bounding_box()['height'], 899)
         self.assertGreaterEqual(float(self.page.locator('.eyebrow').evaluate('(el) => parseFloat(getComputedStyle(el).fontSize)')), 15)
