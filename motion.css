@@ -1,4 +1,4 @@
-﻿/* An open work surface: one brief, one output, a quiet route between them. */
+/* An open work surface: one brief, one output, a quiet route between them. */
 #demo{isolation:isolate}
 #demo:before{content:"";position:absolute;z-index:-1;inset:12% -20px 4%;background:radial-gradient(ellipse at 77% 45%,#e5efff 0,transparent 62%);pointer-events:none}
 #demo .experience-toolbar{border:0;padding-bottom:26px}
@@ -106,4 +106,3 @@
 @media(max-width:700px){.workbench{grid-template-columns:1fr;gap:22px}.workbench .brief-column{padding:0}.workbench .task-line{margin:12px 0 22px}.motion-ready .typed-brief{font-size:30px;min-height:75px;max-width:100%}.workbench .flow-aside{display:flex;align-items:center;gap:20px}.workbench .tour-caption{margin:0;max-width:120px}.work-connector{display:none}.flow-hero .workbench .sample-output{min-height:345px;padding:20px}.output-visual{height:135px}#demo:before{inset:20% -15px 10%}.service-layout{grid-template-columns:1fr;gap:20px}.service-universe{width:min(100%,420px);margin:0 auto 15px}.service-copy .deliverables article{padding-left:52px}.service-copy .section-heading h2{font-size:42px}.universe-core strong{font-size:25px}.universe-core [data-orbit-detail]{font-size:13px}.orbit-node{font-size:14px}.universe-caption{font-size:12px}.conversation-art{height:185px;max-width:290px;margin:20px 0}.answer-bubble{font-size:24px}.connection-field:before{inset:-10px}.motion-toggle{font-size:11px;left:10px;bottom:8px;padding:7px 11px;min-height:34px}#demo .demo-title{max-width:none;font-size:34px}#demo .flow-bottom{margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){.motion-ready .is-inview .satellite,.motion-ready .contact-art.is-inview .flight-path{animation:none}.orbit-node,.connection-field .tool,.poster-disc,.question-bubble,.answer-bubble,.service-copy .deliverables article{transition:none}}
 @media(max-width:700px){.poster-disc{width:150px;height:150px;right:-70px;top:40px}.poster-word{font-size:28px}}
-
