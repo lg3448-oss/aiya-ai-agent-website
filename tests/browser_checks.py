@@ -94,6 +94,8 @@ class WebsiteChecks(unittest.TestCase):
         self.assertEqual(self.page.locator('[data-typed]').inner_text(), self.page.locator('[data-brief]').inner_text())
         self.page.locator('#delivery').evaluate('(el)=>el.scrollIntoView({behavior:"instant"})')
         self.page.wait_for_function('document.querySelector(".service-universe").classList.contains("is-inview")')
+        self.page.locator('[data-orbit-service="1"]').click(timeout=3000)
+        self.assertIn('Connect', self.page.locator('[data-orbit-detail]').inner_text())
         satellite = self.page.locator('.satellite').first
         self.assertEqual(satellite.evaluate('(el)=>getComputedStyle(el).animationPlayState'), 'paused')
         self.page.locator('[data-motion-toggle]').click()

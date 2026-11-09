@@ -99,6 +99,8 @@
 @keyframes contact-orbit-three{from{transform:rotate(85deg) scaleY(.4) rotate(0)}to{transform:rotate(85deg) scaleY(.4) rotate(360deg)}}
 .motion-toggle{position:fixed;bottom:12px;left:16px;z-index:120;border:1px solid #d5e1f1;border-radius:24px;background:#fff;color:#506781;padding:9px 14px;min-height:38px;font:500 12px var(--font-body);cursor:pointer}
 .motion-toggle[hidden]{display:none}
+.screen-nav a{position:relative;width:30px}
+.screen-nav span{position:absolute;right:34px;white-space:nowrap}
 .motion-paused .satellite,.motion-paused .contact-art .flight-path{animation-play-state:paused!important}
 @media(hover:hover) and (pointer:fine){.orbit-node:hover{transform:translateY(-4px)}.connection-field .tool:hover{transform:translateY(-5px);border-color:#155cf3;box-shadow:0 10px 22px -14px #4b7bc7}.workbench .sample-output:hover .poster-disc{transform:translateX(-10px) rotate(-35deg)}.poster-disc{transition:transform .25s ease}.conversation-art:hover .question-bubble{transform:translateY(-5px) rotate(-4deg)}.conversation-art:hover .answer-bubble{transform:translateY(-5px)}.question-bubble,.answer-bubble{transition:transform .25s ease}}
 @media(min-width:1024px) and (min-height:650px) and (max-height:800px) and (pointer:fine){#demo .experience-toolbar{padding-bottom:14px}.workbench{min-height:330px}.flow-hero .workbench .sample-output{min-height:320px;padding:18px 22px}.output-visual{height:100px}.flow-hero .workbench .sample-output h3{font-size:26px;margin-top:12px}.workbench .output-meta{margin-bottom:10px}#demo .flow-navigation{margin-top:18px}.service-copy .section-heading{margin-bottom:20px}.service-copy .deliverables article{padding-block:10px}.service-universe{max-height:450px}.conversation-art{height:190px;margin-block:12px}}
