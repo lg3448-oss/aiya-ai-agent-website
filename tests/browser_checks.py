@@ -96,6 +96,34 @@ class WebsiteChecks(unittest.TestCase):
         self.page.emulate_media(reduced_motion='reduce')
         self.assertEqual(traveler.evaluate('(el)=>getComputedStyle(el).animationName'), 'none')
 
+    def test_dedicated_faq_page_navigation_and_answers(self):
+        self.page.locator('[data-menu]').click()
+        self.page.locator('[data-nav-links] a', has_text='FAQs').click()
+        self.assertTrue(self.page.url.endswith('/faq.html'))
+        self.assertEqual(self.page.locator('h1').count(), 1)
+        self.assertEqual(self.page.locator('details').count(), 12)
+        question = self.page.locator('details').first
+        question.locator('summary').click()
+        self.assertTrue(question.get_attribute('open') is not None)
+        self.page.evaluate('scrollTo(0,0)')
+        self.page.locator('[data-menu]').click()
+        self.page.keyboard.press('Escape')
+        self.assertEqual(self.page.locator('[data-menu]').get_attribute('aria-expanded'), 'false')
+        self.assertEqual(self.page.locator('[aria-current="page"]').inner_text(), 'FAQs')
+        for width in [320, 768, 1440]:
+            self.page.set_viewport_size({'width':width,'height':900})
+            self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
+
+    def test_faq_answers_work_without_javascript(self):
+        context = self.browser.new_context(java_script_enabled=False)
+        page = context.new_page()
+        response = page.goto(self.url+'/faq.html')
+        self.assertEqual(response.status, 200)
+        item = page.locator('details').first
+        item.locator('summary').click()
+        self.assertTrue(item.locator('p').is_visible())
+        context.close()
+
     def test_typing_and_orbits_pause_without_hiding_content(self):
         self.page.set_viewport_size({'width': 1366, 'height': 768})
         self.page.emulate_media(reduced_motion='no-preference')
