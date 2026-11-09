@@ -183,6 +183,25 @@ class WebsiteChecks(unittest.TestCase):
         self.assertEqual(page.locator('.learning-resource:visible').count(),6)
         context.close()
 
+    def test_resource_card_art_and_description_open_the_resource(self):
+        self.page.goto(self.url+'/#resources')
+        card=self.page.locator('.learning-resource').first
+        expected=card.locator('a').get_attribute('href')
+        # Keep this test local: prove the browser opens the correct destination,
+        # without depending on the publisher's network or consent screens.
+        self.page.context.route('https://www.youtube.com/**', lambda route: route.fulfill(status=200,body='<title>Resource destination</title>'))
+        for target in [card.locator('.resource-art'),card.locator('h3'),card.locator('p')]:
+            with self.page.expect_popup() as popup:
+                target.click()
+            destination=popup.value
+            destination.wait_for_load_state()
+            self.assertEqual(destination.url,expected)
+            destination.close()
+        card.locator('a').focus()
+        with self.page.expect_popup() as popup:
+            self.page.keyboard.press('Enter')
+        popup.value.close()
+
     def test_typing_and_orbits_pause_without_hiding_content(self):
         self.page.set_viewport_size({'width': 1366, 'height': 768})
         self.page.emulate_media(reduced_motion='no-preference')

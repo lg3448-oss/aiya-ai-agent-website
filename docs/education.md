@@ -4,6 +4,8 @@ The introductory agent diagram follows the tools chapter. The next homepage chap
 
 All six links are primary publisher resources, checked on 2026-11-09:
 
+Each resource is one native link covering the whole module, including artwork, title, description and action text. Keyboard focus outlines the entire card; pointer hover adds a subtle two-pixel lift to the artwork. Reduced motion disables that movement. There are no nested links or JavaScript-only click targets.
+
 - Google Cloud video, linked from its official agent overview: https://www.youtube.com/watch?v=d0wUM8hIaxE
 - IBM Think overview: https://www.ibm.com/think/topics/ai-agents
 - IBM Technology video: https://www.youtube.com/watch?v=F8NKVhkZZWI
