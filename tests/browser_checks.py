@@ -68,6 +68,21 @@ class WebsiteChecks(unittest.TestCase):
         self.assertEqual(tool.get_attribute('aria-pressed'), 'false')
         self.assertEqual(self.page.locator('[data-count]').inner_text(), '3')
 
+    def test_logo_array_has_subtle_hover_and_readable_names(self):
+        self.page.set_viewport_size({'width':1440,'height':900})
+        self.page.emulate_media(reduced_motion='no-preference')
+        tool = self.page.locator('.tool').first
+        self.assertGreaterEqual(self.page.locator('.tool').count(), 28)
+        tool.hover()
+        self.page.wait_for_timeout(250)
+        scale = tool.locator('img').evaluate('(el)=>new DOMMatrixReadOnly(getComputedStyle(el).transform).a')
+        self.assertGreater(scale, 1)
+        self.assertLessEqual(scale, 1.1)
+        tool.focus()
+        self.assertEqual(tool.locator('.tool-name').evaluate('(el)=>getComputedStyle(el).opacity'), '1')
+        self.page.emulate_media(reduced_motion='reduce')
+        self.assertEqual(tool.locator('img').evaluate('(el)=>getComputedStyle(el).transitionDuration'), '0s')
+
     def test_motion_controls_and_service_exploration(self):
         self.page.emulate_media(reduced_motion='no-preference')
         self.page.reload()

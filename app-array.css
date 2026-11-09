@@ -1,0 +1,26 @@
+/* Airy brand constellation with restrained, logo-only hover feedback. */
+.tools.app-array{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;text-align:center;padding-block:90px}
+.app-array .tools-copy{width:100%;margin-bottom:38px}
+.app-array .tools-copy .section-label{font-size:16px;margin-bottom:20px}
+.tools.app-array h2{font-size:clamp(42px,4.5vw,64px);line-height:1.07;margin:0 0 20px}
+.app-array .tools-copy>p:not(.section-label){font-size:18px;max-width:none;margin:0;color:#536b89}
+.app-array .tool-cloud{display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:25px 22px;width:min(100%,840px);padding:10px 0 20px;margin:0;background:none;border:0;position:relative}
+.app-array .tool-cloud:before{display:none}
+.app-array .tool{flex:0 0 62px;display:flex;align-items:center;justify-content:center;width:62px;height:62px;min-height:62px;padding:12px;border:0!important;border-radius:12px;background:transparent!important;box-shadow:none!important;transform:none!important;position:relative;overflow:visible;gap:0}
+.app-array .tool:after{display:none}
+.app-array .tool .tool-logo{width:34px;height:34px;flex:0 0 34px;object-fit:contain;transform:scale(1);transition:transform 180ms cubic-bezier(.215,.61,.355,1);margin:0}
+.app-array .tool-name{position:absolute;left:50%;bottom:-17px;transform:translateX(-50%);color:#365478;background:#fff;border:1px solid #e0e8f5;border-radius:6px;box-shadow:0 4px 12px -8px #6a84ab;padding:4px 8px;font-size:12px;line-height:1.3;white-space:nowrap;opacity:0;pointer-events:none;z-index:2;transition:opacity 150ms ease}
+.app-array .tool:focus-visible .tool-name{opacity:1}
+.app-array .tool:focus-visible .tool-logo{transform:scale(1.08)}
+.app-array .tool[aria-pressed=true]:before{content:"";display:block;position:absolute;left:calc(50% - 2px);bottom:1px;top:auto;width:4px;height:4px;background:#155cf3;border-radius:50%;transform:none}
+.app-array .selected-count{display:flex;justify-content:center;align-items:baseline;gap:6px;margin:28px 0 10px;color:#536b89;font-size:14px}
+.app-array .selected-count strong{font:600 14px var(--font-body);color:#155cf3}
+.app-array .selected-count span{font-size:14px;line-height:1.5}
+.app-array #tool-help{font-size:13px;color:#536b89;line-height:1.6;margin:0;max-width:580px}
+@media(hover:hover) and (pointer:fine){.app-array .tool:hover .tool-logo{transform:scale(1.08)}.app-array .tool:hover .tool-name{opacity:1}}
+@media(min-width:1024px) and (min-height:650px) and (pointer:fine){.tools.app-array.fullscreen-section{padding-top:126px;padding-bottom:45px}}
+@media(min-width:1024px) and (min-height:650px) and (max-height:800px) and (pointer:fine){.app-array .tools-copy{margin-bottom:28px}.app-array .tool-cloud{gap:18px 22px}.app-array .selected-count{margin-top:20px}}
+@media(max-width:900px){.app-array .tool-cloud{width:min(100%,650px);gap:22px 16px}.app-array .tool{flex-basis:58px;width:58px;height:58px;min-height:58px}.app-array .tools-copy{margin-bottom:30px}}
+@media(max-width:600px){.tools.app-array{padding-block:60px}.app-array .tools-copy .section-label{font-size:14px;margin-bottom:20px}.tools.app-array h2{font-size:42px}.app-array .tools-copy>p:not(.section-label){font-size:17px;max-width:300px;margin-inline:auto}.app-array .tool-cloud{gap:19px 9px;max-width:370px;padding-bottom:15px}.app-array .tool{flex-basis:54px;width:54px;height:54px;min-height:54px;padding:10px}.app-array .tool .tool-logo{width:31px;height:31px;flex-basis:31px}.app-array .selected-count{margin-top:22px}.app-array #tool-help{font-size:12px;max-width:300px}.app-array .tool-name{font-size:11px;bottom:-18px}}
+@media(max-width:360px){.app-array .tool-cloud{gap:19px 8px}.app-array .tool{flex-basis:49px;width:49px;height:49px;min-height:49px}.app-array .tool .tool-logo{width:29px;height:29px;flex-basis:29px}.tools.app-array h2{font-size:38px}}
+@media(prefers-reduced-motion:reduce){.app-array .tool .tool-logo,.app-array .tool-name{transition:none}}
