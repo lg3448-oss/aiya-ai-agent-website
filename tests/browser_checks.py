@@ -83,6 +83,19 @@ class WebsiteChecks(unittest.TestCase):
         self.assertEqual(self.page.locator('[data-typed]').inner_text(), self.page.locator('[data-brief]').inner_text())
         self.assertEqual(self.page.locator('.satellite').first.evaluate('(el) => getComputedStyle(el).animationName'), 'none')
 
+    def test_contact_constellation_respects_motion_controls(self):
+        self.assertEqual(self.page.locator('.contact-logo img').count(), 6)
+        self.assertEqual(self.page.locator('.brain-particle').count(), 36)
+        self.page.emulate_media(reduced_motion='no-preference')
+        self.page.locator('#contact').evaluate('(el)=>el.scrollIntoView({behavior:"instant"})')
+        self.page.wait_for_function('document.querySelector(".contact-art").classList.contains("is-inview")')
+        traveler = self.page.locator('.contact-traveler').first
+        self.assertNotEqual(traveler.evaluate('(el)=>getComputedStyle(el).animationName'), 'none')
+        self.page.locator('[data-motion-toggle]').click()
+        self.assertEqual(traveler.evaluate('(el)=>getComputedStyle(el).animationPlayState'), 'paused')
+        self.page.emulate_media(reduced_motion='reduce')
+        self.assertEqual(traveler.evaluate('(el)=>getComputedStyle(el).animationName'), 'none')
+
     def test_typing_and_orbits_pause_without_hiding_content(self):
         self.page.set_viewport_size({'width': 1366, 'height': 768})
         self.page.emulate_media(reduced_motion='no-preference')

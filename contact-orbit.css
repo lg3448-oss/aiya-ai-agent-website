@@ -1,0 +1,26 @@
+/* Tool marks orbit a calm, dimensional centre. No framed illustration. */
+.contact-screen .contact-art.connected-universe{height:auto;aspect-ratio:1;width:100%;max-width:460px;max-height:none;margin:auto;overflow:clip;isolation:isolate}
+.connected-universe:before{content:"";position:absolute;inset:10%;background:radial-gradient(circle,#eaf2ff,transparent 68%);z-index:-1}
+.contact-orbit{position:absolute;left:50%;top:50%;aspect-ratio:1;border:1px solid #c5d5ec;border-radius:50%;transform:translate(-50%,-50%)}
+.orbit-outer{width:90%;--duration:48s}
+.orbit-inner{width:59%;--duration:34s}
+.contact-traveler{position:absolute;inset:0;border-radius:50%;transform:rotate(var(--start));pointer-events:none}
+.contact-logo{position:absolute;top:0;left:50%;width:44px;height:44px;margin:-22px;display:grid;place-items:center;background:#fff;border:1px solid #e0e8f5;border-radius:12px;box-shadow:0 5px 15px -10px #6386b8;transform:rotate(calc(-1 * var(--start)));pointer-events:auto}
+.contact-logo img{width:28px;height:28px;object-fit:contain;transition:transform .22s ease}
+.contact-brain{position:absolute;left:50%;top:50%;width:130px;height:140px;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;perspective:400px}
+.particle-sphere{--radius:40px;width:90px;height:90px;position:relative;transform-style:preserve-3d;transform:rotateX(-16deg) rotateY(20deg)}
+.brain-particle{position:absolute;left:50%;top:50%;width:3px;height:3px;margin:-1.5px;border-radius:50%;background:#155cf3;box-shadow:0 0 5px #93b8f0;opacity:calc(.55 + var(--z) * .35);transform:translate3d(calc(var(--x) * var(--radius)),calc(var(--y) * var(--radius)),calc(var(--z) * var(--radius)))}
+.brain-particle:nth-child(4n){width:5px;height:5px;background:#527fe2}
+.brain-label{margin-top:10px;text-align:center;font:550 21px/1.2 var(--font-display);letter-spacing:-.025em;color:#19365c;white-space:nowrap}
+.brain-label small{display:block;font:400 12px/1.4 var(--font-body);color:#506781;letter-spacing:0;margin-top:7px}
+.motion-ready .connected-universe.is-inview .contact-traveler{animation:tool-orbit var(--duration) linear infinite}
+.motion-ready .connected-universe.is-inview .contact-logo{animation:tool-counter-orbit var(--duration) linear infinite}
+.motion-ready .connected-universe.is-inview .particle-sphere{animation:brain-turn 24s linear infinite}
+@keyframes tool-orbit{from{transform:rotate(var(--start))}to{transform:rotate(calc(var(--start) + 360deg))}}
+@keyframes tool-counter-orbit{from{transform:rotate(calc(-1 * var(--start)))}to{transform:rotate(calc(-1 * var(--start) - 360deg))}}
+@keyframes brain-turn{from{transform:rotateX(-16deg) rotateY(20deg)}to{transform:rotateX(-16deg) rotateY(380deg)}}
+.motion-paused .connected-universe .contact-traveler,.motion-paused .connected-universe .contact-logo,.motion-paused .connected-universe .particle-sphere{animation-play-state:paused!important}
+@media(hover:hover) and (pointer:fine){.connected-universe:hover .contact-traveler,.connected-universe:hover .contact-logo{animation-play-state:paused}.contact-logo:hover img{transform:scale(1.15)}}
+@media(min-width:1024px) and (min-height:650px) and (max-height:800px) and (pointer:fine){.contact-screen .contact-art.connected-universe{max-width:350px}}
+@media(max-width:600px){.contact-screen .contact-art.connected-universe{width:min(100%,330px);max-width:330px;margin:18px auto 0}.contact-logo{width:36px;height:36px;margin:-18px;border-radius:10px}.contact-logo img{width:24px;height:24px}.contact-brain{width:115px;height:120px}.particle-sphere{--radius:30px;width:70px;height:70px}.brain-label{font-size:19px;margin-top:8px}.brain-label small{font-size:11px;margin-top:5px}}
+@media(prefers-reduced-motion:reduce){.motion-ready .connected-universe.is-inview .contact-traveler,.motion-ready .connected-universe.is-inview .contact-logo,.motion-ready .connected-universe.is-inview .particle-sphere{animation:none}.contact-logo img{transition:none}}

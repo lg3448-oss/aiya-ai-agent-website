@@ -9,3 +9,5 @@ Typing runs once when the workflow enters view and on scenario changes. Screen r
 Visual reference: https://aiagent.app/ (interactive workflow demonstrations). Animation guidance: vercel-labs/open-agents web-animation-design skill, installed locally. Existing typography and cobalt/ivory palette are retained.
 
 Verify with `tests/browser_checks.py`, then inspect seven chapters at desktop/laptop sizes and the stacked layout at 320/390/768px.
+
+The contact chapter now uses two circular tool orbits around a 36-point Fibonacci sphere. Tool marks counter-rotate to stay upright. Hover pauses the tool paths; the global control, hidden-tab handling and reduced-motion preference cover the entire constellation. This adapts the supplied reference to the existing light palette using local SVG tool assets, without implying active integrations.

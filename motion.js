@@ -9,6 +9,21 @@
   let typingTimer;
   let demoVisible = false;
   let hasTyped = false;
+  // Fibonacci sphere: a small deterministic constellation, no canvas render loop.
+  const sphere = document.querySelector('[data-particle-sphere]');
+  if (sphere) {
+    for (let index = 0; index < 36; index++) {
+      const y = 1 - 2 * index / 35;
+      const radius = Math.sqrt(1 - y * y);
+      const angle = index * Math.PI * (3 - Math.sqrt(5));
+      const dot = document.createElement('i');
+      dot.className = 'brain-particle';
+      dot.style.setProperty('--x', (Math.cos(angle) * radius).toFixed(4));
+      dot.style.setProperty('--y', y.toFixed(4));
+      dot.style.setProperty('--z', (Math.sin(angle) * radius).toFixed(4));
+      sphere.append(dot);
+    }
+  }
   document.body.classList.add('motion-ready');
   toggle.hidden = false;
 
