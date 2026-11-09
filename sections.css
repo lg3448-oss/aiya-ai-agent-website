@@ -7,6 +7,7 @@ h1,h2,h3{font-variation-settings:'wdth' 97;letter-spacing:-.04em}
 .section-heading h2,.control-heading h2,.tools h2,.faq-layout h2,.final-cta h2{font-weight:550;letter-spacing:-.04em;line-height:1.06}
 .section-label{font-size:15px;color:#506781;font-weight:500;letter-spacing:0}
 .demo-title{font-size:32px;line-height:1.1;letter-spacing:-.035em;margin:0}
+.output-footer[hidden]{display:none}
 .scroll-cue{display:none}
 .screen-nav{display:none}
 .control-heading h2{font-size:40px;margin:0}

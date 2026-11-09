@@ -60,7 +60,7 @@ const workflows = {
           "Email: “Your weekday lunch, sorted.”",
           "Visual: approved dish photo and offer"
         ],
-        "Drafts only. Not published."
+        ""
       ],
       [
         "Approval checklist",
@@ -239,7 +239,9 @@ function renderStage(index, animate = true) {
     item.textContent = text;
     return item;
   }));
-  document.querySelector('[data-output-footer]').textContent = values[4];
+  const outputFooter = document.querySelector('[data-output-footer]');
+  outputFooter.textContent = values[4];
+  outputFooter.parentElement.hidden = !values[4];
   if (outputAnimation) outputAnimation.cancel();
   if (animate && !reducedMotion.matches) {
     outputAnimation = output.animate([{ opacity: .4, transform: 'translateY(5px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 220, easing: 'ease-out' });
