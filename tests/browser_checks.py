@@ -160,8 +160,10 @@ class WebsiteChecks(unittest.TestCase):
             self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
 
     def test_education_resources_filter_and_accessibility(self):
-        self.page.goto(self.url+'/education.html')
+        self.page.goto(self.url+'/#resources')
         self.assertEqual(self.page.locator('.learning-resource').count(), 6)
+        self.assertTrue(self.page.locator('#education').evaluate('(el)=>el.nextElementSibling.id === "resources"'))
+        self.assertEqual(self.page.locator('a[href="education.html"]').count(), 0)
         self.page.locator('[data-resource-filter="video"]').click()
         self.assertEqual(self.page.locator('.learning-resource:visible').count(), 2)
         self.assertEqual(self.page.locator('[data-resource-filter="video"]').get_attribute('aria-pressed'), 'true')
@@ -177,7 +179,7 @@ class WebsiteChecks(unittest.TestCase):
             self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
         context=self.browser.new_context(java_script_enabled=False)
         page=context.new_page()
-        page.goto(self.url+'/education.html')
+        page.goto(self.url+'/#resources')
         self.assertEqual(page.locator('.learning-resource:visible').count(),6)
         context.close()
 
@@ -244,7 +246,7 @@ class WebsiteChecks(unittest.TestCase):
         self.page.set_viewport_size({'width': 1440, 'height': 900})
         self.page.reload()
         self.page.evaluate('() => document.fonts.ready')
-        self.assertEqual(self.page.locator('[data-screen]').count(), 9)
+        self.assertEqual(self.page.locator('[data-screen]').count(), 10)
         self.assertTrue(self.page.evaluate('document.documentElement.classList.contains("fullpage-ready")'))
         self.assertGreaterEqual(self.page.locator('[data-screen]').first.bounding_box()['height'], 899)
         self.assertGreaterEqual(float(self.page.locator('.eyebrow').evaluate('(el) => parseFloat(getComputedStyle(el).fontSize)')), 15)

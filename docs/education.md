@@ -1,6 +1,6 @@
 # Education hub
 
-The homepage education chapter follows the tools chapter. It introduces a goal → agent/tool use → reviewable brief using an original diagram, with direct links to a Google Cloud video and an IBM introduction. `education.html` expands this into a learning hub with four articles and two videos, format filters and a business-oriented explanation. Shared navigation and resource footers link to it on all four pages.
+The introductory agent diagram follows the tools chapter. The next homepage chapter contains four articles and two videos, with format filters. The diagram's CTA scrolls directly to this resource collection. The visible Education label and navigation item have been removed at the owner's request; resource footers link to `index.html#resources`. The previous `education.html` URL redirects to the same collection, preserving existing bookmarks without a separate learning page.
 
 All six links are primary publisher resources, checked on 2026-11-09:
 
@@ -13,4 +13,4 @@ All six links are primary publisher resources, checked on 2026-11-09:
 
 Anthropic's article is labelled as a 2024 foundational technical resource, rather than current tooling documentation. Card summaries are original and brief. Decorative card artwork is native CSS; no publisher video thumbnails or embedded players are copied. Videos open on YouTube when chosen. All resources stay visible without JavaScript; filters use native buttons and an announced result count.
 
-Verification includes filtering between all resources / articles / videos, link attributes, no-JavaScript availability, responsive layouts and all existing homepage interactions. The homepage now has nine desktop chapters.
+Verification includes resource placement immediately after the diagram, filtering between all resources / articles / videos, link attributes, no-JavaScript availability, responsive layouts and all existing homepage interactions. The homepage now has ten desktop chapters.
