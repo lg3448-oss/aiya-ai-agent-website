@@ -72,9 +72,9 @@ class WebsiteChecks(unittest.TestCase):
         self.assertNotEqual(self.page.locator('.menu-button span').first.evaluate('(el) => getComputedStyle(el).backgroundColor'), 'rgb(255, 255, 255)')
 
     def test_self_hosted_fonts_load(self):
-        self.assertGreater(self.page.evaluate('async () => (await document.fonts.load("650 48px Manrope")).length'), 0)
-        self.assertGreater(self.page.evaluate('async () => (await document.fonts.load("400 16px \\"DM Sans\\"")).length'), 0)
-        self.assertIn('Manrope', self.page.locator('h1').evaluate('(el) => getComputedStyle(el).fontFamily'))
+        self.assertGreater(self.page.evaluate('async family => (await document.fonts.load(`550 48px "${family}"`)).length', 'Bricolage Grotesque'), 0)
+        self.assertGreater(self.page.evaluate('async family => (await document.fonts.load(`400 16px "${family}"`)).length', 'Instrument Sans'), 0)
+        self.assertIn('Bricolage Grotesque', self.page.locator('h1').evaluate('(el) => getComputedStyle(el).fontFamily'))
 
     def test_workflow_and_integrated_images_share_the_hero(self):
         self.assertEqual(self.page.locator('.hero .hero-visual img').count(), 1)
@@ -82,7 +82,7 @@ class WebsiteChecks(unittest.TestCase):
         artwork = self.page.locator('.hero-visual')
         self.assertEqual(artwork.evaluate('(el) => getComputedStyle(el).borderRadius'), '0px')
         self.assertNotEqual(artwork.evaluate('(el) => getComputedStyle(el).maskImage'), 'none')
-        self.assertEqual(self.page.locator('.hero #workflow-panel').count(), 1)
+        self.assertEqual(self.page.locator('#demo #workflow-panel').count(), 1)
         self.assertEqual(self.page.locator('#workflow-panel').count(), 1)
         self.page.get_by_role('button', name='Watch the workflow', exact=True).click(timeout=3000)
         self.assertEqual(self.page.locator('[data-stage="2"]').get_attribute('aria-pressed'), 'true')
@@ -108,6 +108,52 @@ class WebsiteChecks(unittest.TestCase):
         self.page.wait_for_function('document.querySelector("[data-flow-status]").textContent === "Ready for your review"', timeout=6000)
         self.assertEqual(self.page.locator('[data-stage="3"]').get_attribute('aria-pressed'), 'false')
         self.assertTrue(self.page.get_by_role('button', name='Replay workflow', exact=True).is_visible())
+
+    def test_desktop_fullscreen_wheel_and_keyboard_navigation(self):
+        self.page.set_viewport_size({'width': 1440, 'height': 900})
+        self.page.reload()
+        self.page.evaluate('() => document.fonts.ready')
+        self.assertEqual(self.page.locator('[data-screen]').count(), 7)
+        self.assertTrue(self.page.evaluate('document.documentElement.classList.contains("fullpage-ready")'))
+        self.assertGreaterEqual(self.page.locator('[data-screen]').first.bounding_box()['height'], 899)
+        self.assertGreaterEqual(float(self.page.locator('.eyebrow').evaluate('(el) => parseFloat(getComputedStyle(el).fontSize)')), 15)
+        self.page.mouse.move(1100, 500)
+        self.page.mouse.wheel(0, 160)
+        self.page.wait_for_function('Math.abs(document.getElementById("demo").getBoundingClientRect().top) < 2', timeout=4000)
+        self.page.keyboard.press('PageDown')
+        self.page.wait_for_function('Math.abs(document.getElementById("delivery").getBoundingClientRect().top) < 2', timeout=4000)
+        self.page.keyboard.press('PageUp')
+        self.page.wait_for_function('Math.abs(document.getElementById("demo").getBoundingClientRect().top) < 2', timeout=4000)
+
+    def test_mobile_keeps_natural_scrolling(self):
+        self.assertFalse(self.page.evaluate('document.documentElement.classList.contains("fullpage-ready")'))
+        self.page.mouse.wheel(0, 240)
+        self.page.wait_for_function('scrollY > 50')
+        self.assertLess(self.page.evaluate('scrollY'), self.page.locator('#demo').evaluate('(el) => el.offsetTop'))
+
+    def test_desktop_animation_does_not_skip_chapters(self):
+        self.page.set_viewport_size({'width': 1440, 'height': 900})
+        self.page.emulate_media(reduced_motion='no-preference')
+        self.page.reload()
+        self.page.evaluate('() => document.fonts.ready')
+        self.page.mouse.move(1100, 500)
+        for _ in range(3):
+            self.page.mouse.wheel(0, 160)
+        self.page.wait_for_function('!document.documentElement.classList.contains("is-paging") && Math.abs(document.getElementById("demo").getBoundingClientRect().top)<2', timeout=5000)
+        self.assertGreaterEqual(self.page.locator('#delivery').bounding_box()['y'], 899)
+        self.assertTrue(self.page.locator('.nav').evaluate('(el) => el.contains(document.elementFromPoint(innerWidth-150,40))'))
+
+    def test_expanded_faq_scrolls_before_next_chapter(self):
+        self.page.set_viewport_size({'width': 1100, 'height': 650})
+        self.page.reload()
+        self.page.locator('#faq details').evaluate_all('(items) => items.forEach(item => item.open=true)')
+        self.page.locator('#faq').evaluate('(el) => el.scrollIntoView({behavior:"instant",block:"start"})')
+        self.page.wait_for_function('document.querySelector("#faq").getBoundingClientRect().height > innerHeight')
+        start = self.page.evaluate('scrollY')
+        self.page.mouse.move(800, 440)
+        self.page.mouse.wheel(0, 120)
+        self.page.wait_for_function('start => scrollY > start + 10', arg=start)
+        self.assertLess(self.page.evaluate('scrollY'), self.page.locator('#contact').evaluate('(el) => el.offsetTop'))
 
     def test_workflow_keyboard_and_faq(self):
         first = self.page.get_by_role('tab', name='Restaurant marketing', exact=True)

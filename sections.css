@@ -1,0 +1,154 @@
+@font-face{font-family:'Bricolage Grotesque';src:url('assets/fonts/bricolage-latin.woff2') format('woff2');font-style:normal;font-weight:200 800;font-stretch:75% 100%;font-display:swap}
+@font-face{font-family:'Instrument Sans';src:url('assets/fonts/instrument-latin.woff2') format('woff2');font-style:normal;font-weight:400 700;font-stretch:75% 100%;font-display:swap}
+:root{--font-display:'Bricolage Grotesque',sans-serif;--font-body:'Instrument Sans',sans-serif;--header-height:84px}
+body{font-family:var(--font-body)}
+h1,h2,h3{font-variation-settings:'wdth' 97;letter-spacing:-.04em}
+.flow-hero h1{font-weight:550;letter-spacing:-.045em;line-height:1.02}
+.section-heading h2,.control-heading h2,.tools h2,.faq-layout h2,.final-cta h2{font-weight:550;letter-spacing:-.04em;line-height:1.06}
+.section-label{font-size:15px;color:#506781;font-weight:500;letter-spacing:0}
+.demo-title{font-size:32px;line-height:1.1;letter-spacing:-.035em;margin:0}
+.scroll-cue{display:none}
+.screen-nav{display:none}
+.control-heading h2{font-size:40px;margin:0}
+.hero-experience.flow-hero{padding-block:45px 65px}
+.contact-screen .final-cta{padding-block:65px}
+.control-screen{padding-block:65px;background:var(--pale)}
+.control-screen .control-note{margin:0;border:0;padding:0}
+.control-screen .context-image{margin-top:0}
+.flow-hero .flow-aside h2{font-weight:550}
+.flow-hero .sample-output h3{font-weight:550}
+.task-line>[data-brief]{font-family:var(--font-body);font-weight:500}
+
+@media(min-width:1024px) and (min-height:650px) and (pointer:fine){
+  html{scroll-padding-top:0;scroll-behavior:smooth}
+  html.fullpage-ready{scroll-snap-type:y mandatory}
+  html.is-paging{scroll-snap-type:none!important;scroll-behavior:auto!important}
+  body{overflow-x:clip}
+  .section-shell{width:min(1280px,calc(100% - 144px))}
+  .nav{position:sticky;top:0;left:0;transform:none;width:100%;height:var(--header-height);margin:0 0 calc(-1 * var(--header-height));padding-inline:max(72px,calc((100vw - 1280px)/2));z-index:100;background:#fff;border-bottom:1px solid #e0eaf6;backdrop-filter:none}
+  .nav:before{display:none}
+  .nav .brand img{width:72px;height:72px}
+  .nav-links{font-size:16px;gap:32px}
+  .nav-links>.nav-cta{min-height:46px}
+  .fullscreen-section{position:relative;min-height:100svh;padding-top:calc(var(--header-height) + 42px);padding-bottom:48px;scroll-snap-align:start;scroll-snap-stop:always;margin-top:0;margin-bottom:0;box-sizing:border-box}
+  .hero.fullscreen-section{display:flex;flex-direction:column;justify-content:center}
+  .hero .hero-intro{width:100%;min-height:clamp(420px,59svh,610px);margin:0;padding:28px 0 40px}
+  .hero .hero-visual{top:-9%;height:118%;width:72%;right:-5%}
+  .hero .hero-copy{max-width:690px}
+  .flow-hero h1{font-size:clamp(66px,6.2vw,90px)}
+  .hero-intro .hero-summary{max-width:440px;margin-top:30px}
+  .hero-intro .hero-summary>p{font-size:21px;line-height:1.5;max-width:370px}
+  .hero-intro .hero-summary .hero-actions{margin-top:26px;gap:24px}
+  .flow-hero .eyebrow{font-size:16px;margin-bottom:30px}
+  .button{font-size:16px;padding:16px 24px;min-height:54px}
+  .hero-summary .text-link,.text-link{font-size:16px}
+  .scroll-cue{display:flex;align-items:center;gap:24px;position:absolute;left:0;bottom:28px;font-size:14px;color:var(--slate);min-height:36px}
+  .scroll-cue span{color:var(--blue);font-size:20px}
+  .hero-experience.fullscreen-section{display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--header-height) + 36px);padding-bottom:32px}
+  .experience-toolbar{padding-bottom:22px;gap:30px}
+  .demo-title{font-size:34px}
+  .flow-hero .scenario-tabs{gap:26px}
+  .flow-hero .scenario-tabs button{font-size:15px}
+  .flow-hero .scenario-tabs button[aria-selected=true]:after{bottom:-23px}
+  .task-line{grid-template-columns:145px 1fr;padding-block:24px;gap:22px}
+  .task-label{font-size:15px;padding-top:5px}
+  .task-line>[data-brief]{font-size:27px;line-height:1.3;max-width:850px}
+  .flow-navigation{margin-bottom:22px}
+  .flow-hero .stage-buttons button{min-height:102px}
+  .flow-hero .stage-buttons button b{font-size:17px}
+  .flow-hero .stage-buttons button small{font-size:14px}
+  .flow-hero .stage-buttons button>span{font-size:13px;width:40px;height:40px}
+  .flow-result{padding:24px 30px;gap:42px;grid-template-columns:.7fr 1.3fr}
+  .flow-step,.flow-hero .output-meta,.sample-label{font-size:13px}
+  .flow-aside h2{font-size:30px;line-height:1.1;margin:15px 0 24px}
+  .tour-button{font-size:15px;min-height:46px}
+  .tour-caption{font-size:13px;margin-top:12px}
+  .flow-hero .sample-output{min-height:210px;padding-left:30px}
+  .flow-hero .sample-output h3{font-size:30px;line-height:1.15}
+  .flow-hero .sample-output>p{font-size:16px;line-height:1.5}
+  .flow-hero .sample-output li{font-size:16px;padding-block:7px;line-height:1.4}
+  .flow-hero .output-footer{font-size:13px}
+  .flow-bottom{font-size:13px;padding-top:18px;padding-bottom:0;line-height:1.4}
+  .flow-status{font-size:14px}
+  .delivery-section{display:flex;align-items:center;background:#fff}
+  .section-heading{margin-bottom:54px}
+  .section-label{font-size:16px;margin-bottom:24px}
+  .section-heading h2,.control-heading h2,.tools h2,.faq-layout h2{font-size:clamp(48px,4.5vw,64px)}
+  .deliverables{gap:55px}
+  .deliverables article{padding:32px 0}
+  .deliverables .service-step{font-size:17px;margin-bottom:32px}
+  .deliverables h3{font-size:30px;margin-bottom:18px}
+  .deliverables p{font-size:19px;line-height:1.55;max-width:290px}
+  .control-screen{display:flex;align-items:center;background:var(--pale)}
+  .control-note{grid-template-columns:1.1fr 1fr;row-gap:28px;column-gap:75px;align-items:start}
+  .control-note .context-image{margin-top:0}
+  .context-image img{height:clamp(265px,35svh,370px)}
+  .context-image figcaption{font-size:15px}
+  .context-image figcaption small{font-size:13px}
+  .control-points{padding-top:16px}
+  .control-points strong{font-size:26px}
+  .control-points p{font-size:19px;line-height:1.55;margin-bottom:26px}
+  .tools{align-content:center;gap:100px;grid-template-columns:.8fr 1.2fr}
+  .tools-copy>p:not(.section-label){font-size:20px;line-height:1.55;max-width:380px}
+  .selected-count{gap:20px;margin-top:34px}
+  .selected-count strong{font-size:64px}
+  .selected-count span{font-size:15px;line-height:1.5}
+  .tool-cloud{gap:12px}
+  .tool{font-size:15px;min-height:70px;padding:16px 14px;gap:12px}
+  .tool-logo{width:30px;height:30px;flex-basis:30px}
+  .tools .tool-cloud>p{font-size:14px;line-height:1.55;max-width:500px;margin-top:14px}
+  .faq-section{display:flex;align-items:center}
+  .faq-layout{gap:80px;grid-template-columns:.9fr 1.2fr}
+  .faq-layout .text-link{font-size:17px}
+  .faq-list summary{font-size:18px;line-height:1.4;padding-block:23px}
+  .faq-list details p{font-size:17px;line-height:1.6;margin-bottom:26px}
+  .contact-screen{display:flex;flex-direction:column;padding-bottom:0;justify-content:space-between}
+  .contact-screen .final-cta{flex:1;padding-block:10px 36px;align-content:center}
+  .final-cta h2{font-size:clamp(54px,5vw,74px)}
+  .contact-copy>p:not(.section-label){font-size:21px}
+  .contact-copy>.contact-note{font-size:15px!important;margin-top:20px}
+  .contact-art{height:320px;overflow:visible}
+  .contact-art .flight-path{width:72%;max-width:300px}
+  .contact-screen .footer{padding:20px 0 12px}
+  .footer-inner{gap:16px 60px}
+  .footer-brand{display:flex;align-items:center;gap:20px}
+  .footer-brand img{width:62px;height:62px}
+  .footer-brand p{font-size:14px;margin:0;line-height:1.5}
+  .footer-contact{gap:16px 36px}
+  .footer-contact span{font-size:13px}
+  .footer-contact strong{font-size:15px}
+  .footer-bottom{font-size:13px;padding-top:12px}
+  .screen-nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;z-index:110;gap:3px}
+  .screen-nav a{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-width:30px;min-height:34px;color:var(--slate)}
+  .screen-nav i{display:block;width:6px;height:6px;border-radius:50%;background:#b3c5dd;transition:transform .2s,background-color .2s}
+  .screen-nav span{font-size:13px;background:rgba(255,255,255,.96);padding:6px 10px;border:1px solid #dce6f2;border-radius:6px;opacity:0;pointer-events:none;transform:translateX(6px);transition:opacity .2s,transform .2s}
+  .screen-nav a:hover span,.screen-nav a:focus-visible span{opacity:1;transform:none}
+  .screen-nav a[aria-current=step] i{background:var(--blue);transform:scale(1.5)}
+}
+@media(min-width:1024px) and (min-height:650px) and (max-height:800px) and (pointer:fine){
+  .fullscreen-section{padding-top:112px;padding-bottom:34px}
+  .hero-experience.fullscreen-section{padding-top:108px;padding-bottom:24px}
+  .experience-toolbar{padding-bottom:16px}.demo-title{font-size:30px}.flow-hero .scenario-tabs button[aria-selected=true]:after{bottom:-17px}
+  .task-line{padding-block:18px}.flow-navigation{margin-bottom:16px}
+  .flow-hero .stage-buttons button{min-height:92px}
+  .flow-result{padding:20px 26px}.flow-hero .sample-output{min-height:205px}
+  .flow-hero .sample-output h3{font-size:28px}.flow-hero .sample-output li{padding-block:6px}
+  .flow-bottom{padding-top:14px}.section-heading{margin-bottom:36px}
+  .control-note{row-gap:20px}.context-image img{height:265px}.control-points p{margin-bottom:20px}
+  .faq-list summary{padding-block:19px}
+  .contact-art{height:270px}.contact-screen .final-cta{padding-block:0 24px}
+}
+@media(max-width:1023px),(max-height:649px),(pointer:coarse){
+  .section-label,.flow-hero .eyebrow{font-size:14px}
+  .flow-hero .scenario-tabs button{font-size:12px}
+  .task-label,.flow-step,.flow-hero .output-meta,.sample-label{font-size:12px}
+  .flow-hero .output-footer,.flow-bottom{font-size:12px}
+  .flow-hero .sample-output li{font-size:15px}
+  .tour-button{font-size:14px}.tour-caption{font-size:12px}
+  .hero-experience.flow-hero{padding-block:45px 55px}
+  .experience-toolbar{gap:20px}.demo-title{font-size:30px}
+  .control-screen{padding-block:60px}
+  .control-heading h2{font-size:42px}
+}
+@media(max-width:600px){.experience-toolbar{display:block}.demo-title{font-size:30px;margin-bottom:16px}.hero-experience .scenario-tabs{gap:10px}.flow-hero .scenario-tabs button{font-size:11px}.control-heading h2{font-size:40px}.tour-caption{max-width:110px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.screen-nav i,.screen-nav span{transition:none}}

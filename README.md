@@ -13,7 +13,9 @@ Then open `http://localhost:8080`.
 ## Features
 
 - Responsive white-and-blue AI Pilot service website
-- Self-hosted Manrope headings and DM Sans body typography
+- Self-hosted Bricolage Grotesque headings and Instrument Sans body typography
+- Seven full-height desktop chapters with smooth wheel and keyboard navigation
+- Native scrolling for mobile, small viewports, and oversized content
 - Short service copy and one three-step delivery explanation
 - Integrated, unframed hero artwork alongside a connected business workflow
 - Optional pausable workflow tour that stops for human review
@@ -48,6 +50,7 @@ python tests/browser_checks.py
 The checks start a local HTTP server and cover menu closing and accessibility,
 tool selection, scenario/stage selection, keyboard navigation, FAQ expansion,
 reduced motion, local-only workflow interactions, navigation targets,
+desktop chapter transitions, momentum protection, oversized-section scrolling,
 JavaScript-disabled content, images, and horizontal overflow at
 320, 390, 768, 1024, and 1440 pixels. Screenshots are saved to
 `output/playwright/` (ignored by Git).
